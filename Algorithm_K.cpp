@@ -1,4 +1,4 @@
-// Algorithm_K.cpp: определяет точку входа для консольного приложения.
+// Algorithm_K.cpp: Г®ГЇГ°ГҐГ¤ГҐГ«ГїГҐГІ ГІГ®Г·ГЄГі ГўГµГ®Г¤Г  Г¤Г«Гї ГЄГ®Г­Г±Г®Г«ГјГ­Г®ГЈГ® ГЇГ°ГЁГ«Г®Г¦ГҐГ­ГЁГї.
 //
 
 #include "stdafx.h"
@@ -32,9 +32,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	char exit='0';
 	long double X;
 	long long iX, temp;
-	__int64 tX;//тжс что long long
+	__int64 tX;//long long
 	int Y, Z, Nd;
-	int *dig = new int [10];//массив цифр чиcла Х;
+	int *dig = new int [10];//digits of X
 	bool Xchanged = true;
 	scanf_s("%lf", &X);
 	printf_s("\nX = %lf", X);
@@ -57,11 +57,10 @@ int _tmain(int argc, _TCHAR* argv[])
 				}
 				printf_s("K%d: X = %lf\n", Z, X);
 			case 4:
-				{/*iX=floor(X*X/100000);// этот код не обрезает Х^2/100000, а округляет число, из-за чего алгК искажается уже на шаге К4. 
-				X=iX%10000000000;*///обойдем это так:
+				{/*iX=floor(X*X/100000);//this code does not truncate a number but rounds it up
+				X=iX%10000000000;*/
 				X=X*X/1000.0;
 				//printf_s("\nxx=%lf\n", X);
-				//вычислим число цифр в X
 				Nd = 0;
 				tX=X;
 				//printf_s("\ntx=%I64d\n", tX);
@@ -82,7 +81,7 @@ int _tmain(int argc, _TCHAR* argv[])
 				for(int i=0; i<Nd; i++)
 					printf("%d ", dig1[i]);
 				X=0;
-				for(int i=Nd-3; i>Nd-13; i--)//собираем из цифр середину квадрата
+				for(int i=Nd-3; i>Nd-13; i--)//СЃРµСЂРµРґРёРЅР° РєРІР°РґСЂР°С‚Р°
 					X+=dig1[i]*pow(10.0, 14-i);
 				Xchanged = true;
 				printf_s("\nK%d: X = %lf\n", Z, X);}
@@ -107,7 +106,7 @@ int _tmain(int argc, _TCHAR* argv[])
 				X = iX%10000000000;
 				printf_s("K%d: X = %lf\n", Z, X);
 				Xchanged = true;
-			case 9://полагаем, что в Х 10 цифр
+			case 9://suppose that X consists of 10 digits
 				temp = X;
 				for(int i=9; i>=0; i--){
 					dig[i] = temp%10;
@@ -116,7 +115,7 @@ int _tmain(int argc, _TCHAR* argv[])
 					temp/=10;
 					printf_s("\n%d\n", dig[i]);
 				}
-				X=0;//преобразованные цифры числа Х соберем обратно из массива
+				X=0;//gather X from digits array
 				for(int i=0; i<10; i++){
 					X+=dig[i]*pow(10, 9-i);
 				}
