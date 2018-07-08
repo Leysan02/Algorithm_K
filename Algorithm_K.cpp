@@ -1,5 +1,4 @@
-// Algorithm_K.cpp: îïðåäåëÿåò òî÷êó âõîäà äëÿ êîíñîëüíîãî ïðèëîæåíèÿ.
-//
+// Algorithm_K.cpp:
 
 #include "stdafx.h"
 #include <math.h>
@@ -57,7 +56,7 @@ int _tmain(int argc, _TCHAR* argv[])
 				}
 				printf_s("K%d: X = %lf\n", Z, X);
 			case 4:
-				{/*iX=floor(X*X/100000);//this code does not truncate a number but rounds it up
+				{/*iX=floor(X*X/100000);//wrong because this code does not truncate a number but rounds it up
 				X=iX%10000000000;*/
 				X=X*X/1000.0;
 				//printf_s("\nxx=%lf\n", X);
